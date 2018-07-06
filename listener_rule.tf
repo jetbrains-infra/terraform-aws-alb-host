@@ -1,4 +1,5 @@
 resource "aws_alb_listener_rule" "default" {
+  count = "${length(var.hostnames)}"
 
   action {
     target_group_arn = "${aws_alb_target_group.default.arn}"
@@ -7,7 +8,7 @@ resource "aws_alb_listener_rule" "default" {
 
   condition {
     field  = "host-header"
-    values = ["${var.hostnames}"]
+    values = ["${list(element(var.hostnames, count.index))}"]
   }
 
   listener_arn = "${data.aws_alb_listener.default.arn}"
