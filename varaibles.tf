@@ -96,3 +96,8 @@ locals {
 variable "name" {
   description = "The target group name"
 }
+
+variable "certificate_arn" {
+  description = "The ARN of the certificate to attach to the listener."
+  default = ""
+}

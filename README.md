@@ -27,6 +27,7 @@ module "example-host" {
   loadbalancer_arn                 = "${aws_alb.default.arn}"
   port                             = 443
   protocol                         = "HTTPS"
+  certificate_arn                  = "${module.certificate.arn}"
   deregistration_delay             = 300
   slow_start_duration              = 0
   target_type                      = "instance"
@@ -52,6 +53,7 @@ module "example-host" {
 
 * `port` - The port on which targets receive traffic, unless overridden when registering a specific target (Default `443`).
 * `protocol` - The protocol to use for routing traffic to the targets (Default `HTTPS`).
+* `certificate_arn` - The ARN of the certificate to attach to the listener (Optional).
 * `deregistration_delay` - The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused (Default `300`).
 * `slow_start_duration` - The amount time for targets to warm up before the load balancer sends them a full share of requests (Default `0`).
 * `target_type` - The type of target that you must specify when registering targets with this target group (Default `instance`).
