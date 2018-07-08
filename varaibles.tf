@@ -46,16 +46,6 @@ variable "health_check_path" {
   description = "The destination for the health check request."
 }
 
-variable "health_check_port" {
-  description = "The port to use to connect with the target."
-  default     = "traffic-port"
-}
-
-variable "health_check_protocol" {
-  description = "The protocol to use to connect with the target."
-  default     = "HTTP"
-}
-
 variable "health_check_timeout" {
   description = "The amount of time, in seconds, during which no response means a failed health check."
   default     = 5

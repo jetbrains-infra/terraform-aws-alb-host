@@ -1,5 +1,5 @@
 resource "aws_alb_target_group" "default" {
-  name_prefix          = "${var.name}-"
+  name_prefix          = "${var.name}"
   port                 = "${var.port}"
   protocol             = "${var.protocol}"
   vpc_id               = "${local.vpc_id}"
@@ -16,8 +16,8 @@ resource "aws_alb_target_group" "default" {
   health_check {
     interval            = "${var.health_check_interval}"
     path                = "${var.health_check_path}"
-    port                = "${var.health_check_port}"
-    protocol            = "${var.health_check_protocol}"
+    port                = "traffic-port"
+    protocol            = "${var.protocol}"
     timeout             = "${var.health_check_timeout}"
     healthy_threshold   = "${var.health_check_healthy_threshold}"
     unhealthy_threshold = "${var.health_check_unhealthy_threshold}"

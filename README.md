@@ -33,11 +33,9 @@ module "example-host" {
   target_type                      = "instance"
   stickness                        = true
   stickness_duration               = 86400
-  health_check_port                = "traffic-port"
-  health_check_protocol            = "HTTPS"
   health_check_timeout             = 5
   health_check_interval            = 30
-  health_check_matcher             = 200
+  health_check_matcher             = "200-304"
   health_check_healthy_threshold   = 3
   health_check_unhealthy_threshold = 3
 }
@@ -60,12 +58,10 @@ module "example-host" {
 * `stickness` - Define if requests from a client should be routed to the same target (Default `true`).
 * `stickness_duration` - The time period, in seconds, during which requests from a client should be routed to the same target (Default `86400`).
 * `health_check_interval` - The approximate amount of time, in seconds, between health checks of an individual target (Default `30`).
-* `health_check_port` - The port to use to connect with the target (Default `traffic-port`).
-* `health_check_protocol` - The protocol to use to connect with the target (Default `HTTP`).
 * `health_check_timeout` - The amount of time, in seconds, during which no response means a failed health check (Default `5`).
 * `health_check_healthy_threshold` - The number of consecutive health checks successes required before considering an unhealthy target healthy (Default `3`).
 * `health_check_unhealthy_threshold` - The number of consecutive health check failures required before considering the target unhealthy (Default `3`).
-* `health_check_matcher` - The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, '200,202') or a range of values (for example, '200-299') (Default `200`).
+* `health_check_matcher` - The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, '200,202') or a range of values (for example, '200-299') (Default `200-304`).
 
 ## Outputs
 
