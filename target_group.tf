@@ -1,5 +1,5 @@
 resource "aws_alb_target_group" "default" {
-  name                 = "${var.name}"
+  name_prefix          = "${var.name}-"
   port                 = "${var.port}"
   protocol             = "${var.protocol}"
   vpc_id               = "${local.vpc_id}"
@@ -24,4 +24,7 @@ resource "aws_alb_target_group" "default" {
     matcher             = "${var.health_check_matcher}"
   }
 
+  lifecycle {
+    create_before_destroy = true
+  }
 }
