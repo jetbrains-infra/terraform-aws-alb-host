@@ -4,12 +4,12 @@ variable "hostnames" {
 
 variable "port" {
   description = "The port on which targets receive traffic, unless overridden when registering a specific target."
-  default     = 443
+  default     = 80
 }
 
 variable "protocol" {
   description = "The protocol to use for routing traffic to the targets."
-  default     = "HTTPS"
+  default     = "HTTP"
 }
 
 variable "deregistration_delay" {
@@ -73,7 +73,7 @@ variable "health_check_unhealthy_threshold" {
 
 variable "health_check_matcher" {
   description = "The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, '200,202') or a range of values (for example, '200-299')."
-  default     = "200"
+  default     = "200-304"
 }
 
 variable "loadbalancer_arn" {

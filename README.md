@@ -34,7 +34,7 @@ module "example-host" {
   stickness                        = true
   stickness_duration               = 86400
   health_check_port                = "traffic-port"
-  health_check_protocol            = "HTTP"
+  health_check_protocol            = "HTTPS"
   health_check_timeout             = 5
   health_check_interval            = 30
   health_check_matcher             = 200
@@ -51,8 +51,8 @@ module "example-host" {
 
 ### Optional params with default values
 
-* `port` - The port on which targets receive traffic, unless overridden when registering a specific target (Default `443`).
-* `protocol` - The protocol to use for routing traffic to the targets (Default `HTTPS`).
+* `port` - The port on which targets receive traffic, unless overridden when registering a specific target (Default `80`).
+* `protocol` - The protocol to use for routing traffic to the targets (Default `HTTP`).
 * `certificate_arn` - The ARN of the certificate to attach to the listener (Optional).
 * `deregistration_delay` - The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused (Default `300`).
 * `slow_start_duration` - The amount time for targets to warm up before the load balancer sends them a full share of requests (Default `0`).
