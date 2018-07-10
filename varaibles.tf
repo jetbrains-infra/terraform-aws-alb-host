@@ -12,6 +12,11 @@ variable "protocol" {
   default     = "HTTP"
 }
 
+variable "listner_port" {
+  description = "The port on which ALB receives traffic."
+  default     = "target-port"
+}
+
 variable "deregistration_delay" {
   description = "The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused."
   default     = 300
@@ -72,7 +77,7 @@ variable "loadbalancer_arn" {
 
 data "aws_alb_listener" "default" {
   load_balancer_arn = "${var.loadbalancer_arn}"
-  port              = "${var.port}"
+  port              = "${var.listner_port == "target-port" ? var.port : var.listner_port}"
 }
 
 data "aws_alb" "default" {
