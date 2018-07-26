@@ -1,5 +1,5 @@
 resource "aws_alb_target_group" "default" {
-  name_prefix          = "${var.name}"
+  name_prefix          = "${substr(var.name, 0, 6)}"
   port                 = "${var.port}"
   protocol             = "${var.protocol}"
   vpc_id               = "${local.vpc_id}"
