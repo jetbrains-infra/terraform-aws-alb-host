@@ -8,7 +8,7 @@ resource "aws_alb_listener_rule" "default" {
 
   condition {
     field  = "host-header"
-    values = ["${list(element(var.hostnames, count.index))}"]
+    values = ["${list(replace(element(var.hostnames, count.index), ".xn--p1ai" , ".*"))}"] // "replace" is a w/a to support russian IDN tld
   }
 
   listener_arn = "${data.aws_alb_listener.default.arn}"
